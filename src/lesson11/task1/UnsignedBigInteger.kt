@@ -241,7 +241,7 @@ class UnsignedBigInteger : Comparable<UnsignedBigInteger> {
         return list
     }
 
-    fun divmod(other: UnsignedBigInteger): Pair<UnsignedBigInteger, UnsignedBigInteger> {
+    fun divMod(other: UnsignedBigInteger): Pair<UnsignedBigInteger, UnsignedBigInteger> {
         if (other.list.isEmpty() || other.list == mutableListOf(0)) throw ArithmeticException("Zero division error")
         if (this < other) return Pair(UnsignedBigInteger(0), UnsignedBigInteger(this.list))
         var bigInteger = UnsignedBigInteger(this.list)
@@ -273,12 +273,12 @@ class UnsignedBigInteger : Comparable<UnsignedBigInteger> {
     /**
      * Деление
      */
-    operator fun div(other: UnsignedBigInteger): UnsignedBigInteger = divmod(other).first
+    operator fun div(other: UnsignedBigInteger): UnsignedBigInteger = divMod(other).first
 
     /**
      * Взятие остатка
      */
-    operator fun rem(other: UnsignedBigInteger): UnsignedBigInteger = divmod(other).second
+    operator fun rem(other: UnsignedBigInteger): UnsignedBigInteger = divMod(other).second
 
     /**
      * Сравнение на равенство (по контракту Any.equals)
